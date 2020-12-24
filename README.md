@@ -1,6 +1,6 @@
 # Todo List #1
 
-The first (simple yet stylish :smile:) implementation of a todo list, using vanilla JS, HTML5 and CSS.
+The first (simple yet stylish :smile:) implementation of a todo list, using vanilla JS, HTML5 and CSS3.
 
 * Local storage enabled
 * Add/Delete buttons for every task
