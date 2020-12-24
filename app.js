@@ -10,6 +10,7 @@ todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
 filterOption.addEventListener('click', filterTodos);
 
+
 //Functions
 function addTodo(event) {
     //prevent form from submitting
@@ -47,6 +48,7 @@ function addTodo(event) {
     todoInput.value = "";
 }
 
+
 function deleteCheck(e) {
     const item = e.target; //what i am clicking on
     
@@ -55,6 +57,7 @@ function deleteCheck(e) {
         const todo = item.parentElement;
         //animation
         todo.classList.add('fall');
+        removeLocalTodos(todo);
         todo.addEventListener('transitionend', function() {
             todo.remove();
         });
@@ -66,6 +69,7 @@ function deleteCheck(e) {
         todo.classList.toggle('completed');
     }
 }
+
 
 function filterTodos(e) {
     const todos = todoList.childNodes;
@@ -97,26 +101,32 @@ function filterTodos(e) {
     });
 }
 
-function saveLocalTodos(todo) {
-    //check if i already have something in there
+
+function checkForTodos() {
+    //check if i already have something in the todo list
     let todos;
     if (localStorage.getItem('todos') === null) {
         todos = [];
     } else {
         todos = JSON.parse(localStorage.getItem('todos'));
     }
+    return todos;
+}
+
+
+function saveLocalTodos(todo) {
+    //check if i already have something in there
+    let todos;
+    todos = checkForTodos();
     todos.push(todo);
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
+
 function getTodos() {
     //check if i already have something in there
     let todos;
-    if (localStorage.getItem('todos') === null) {
-        todos = [];
-    } else {
-        todos = JSON.parse(localStorage.getItem('todos'));
-    }
+    todos = checkForTodos();
 
     todos.forEach(function(todo) {
         //todo div
@@ -144,4 +154,14 @@ function getTodos() {
         //append to list
         todoList.appendChild(todoDiv);
     });
+}
+
+
+function removeLocalTodos(todo) {
+    let todos;
+    todos = checkForTodos();
+
+    let todoIndex = todo.children[0].innerText; //position of the element from the div i'm clicking on
+    todos.splice(todos.indexOf(todoIndex), 1); //remove 1 element from the index i'm clicking on
+    localStorage.setItem('todos', JSON.stringify(todos));
 }

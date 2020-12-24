@@ -7,7 +7,7 @@
 body{
     background-image: linear-gradient(90deg, #ffd700, #f24000);
     color: white;
-    font-family: "Lora", sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Sedgwick Ave", "Lora", sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
 }
 
@@ -23,6 +23,7 @@ header,form {
 }
 
 form input, form button {
+    font-family: "Sedgwick Ave", "Lora", sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 0.5rem;
     font-size: 1.5rem;
     border: none;
@@ -103,6 +104,7 @@ form button:hover {
 }
 
 select {
+    font-family: "Sedgwick Ave", "Lora", sans-serif;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
